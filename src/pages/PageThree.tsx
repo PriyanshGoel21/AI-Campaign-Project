@@ -4,7 +4,7 @@ import { FaArrowRightLong } from "react-icons/fa6";
 type CampaignType = "Type 1" | "Type 2" | "Type 3";
 type CampaignStyle = "Style 1" | "Style 2" | "Style 3";
 
-const BaseURL: string = "http://159.89.204.17"
+const BaseURL: string = "http://159.89.204.17:84"
 
 
 const PageThree: React.FC = () => {

@@ -3,7 +3,7 @@ import Card from "../components/Card";
 import { Link } from "react-router-dom";
 import { FaArrowRightLong } from "react-icons/fa6";
 
-const BaseURL: string = "http://159.89.204.17"
+const BaseURL: string = "http://159.89.204.17:84"
 
 const PageOne: React.FC = () => {
     const [companyName, setCompanyName] = useState("");
