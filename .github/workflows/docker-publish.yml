@@ -26,4 +26,4 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: true
-          tags: priyansh05/ai-front:latest
+          tags: lastbraincell/sha256:WOT
