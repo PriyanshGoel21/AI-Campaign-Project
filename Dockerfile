@@ -5,7 +5,7 @@ COPY . /app
 
 #RUN npm install serve -g
 #
-#RUN npm install
+RUN npm install
 #
 #RUN npm run build
 
