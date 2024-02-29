@@ -8,6 +8,7 @@ import axios from "axios";
 import LoadingSpinner from "../components/LoadingSpinner";
 import Banner from "../components/Banner";
 import { useCompanyContext } from "../ThemeContext";
+import { toast } from "react-toastify";
 
 interface Product {
   product_name: string;
@@ -51,6 +52,14 @@ const PageOne: React.FC = () => {
       );
       setData(response.data as ResponseData);
       console.log("Product data:", response.data);
+      toast.success("Scanned Successfully!", {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+      });
     } catch (error) {
       console.error("Error fetching product data:", error);
     } finally {
@@ -151,12 +160,14 @@ const PageOne: React.FC = () => {
             )
           )}
           <div className="px-[40%]">
-            <button
-              className="mt-4 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg"
-              type="submit"
-            >
-              Save & Submit
-            </button>
+            <Link to="/page3">
+              <button
+                className="mt-4 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg"
+                type="submit"
+              >
+                Save & Submit
+              </button>
+            </Link>
           </div>
         </form>
       </main>

@@ -4,11 +4,16 @@ import AlertDialog from "../components/AlertDialog";
 import Banner from "../components/Banner";
 import { useCompanyContext } from "../ThemeContext";
 import axios from "axios";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 type CampaignType = "Type 1" | "Type 2" | "Type 3";
 type CampaignStyle = "Style 1" | "Style 2" | "Style 3";
 
 const PageThree: React.FC = () => {
+  const navigate = useNavigate();
   const { companyName, companyUrl, selectedCards, setCampaignId } =
     useCompanyContext();
 
@@ -23,7 +28,7 @@ const PageThree: React.FC = () => {
   const handleQuantityChange = (operation: "add" | "subtract") => {
     setQuantity((prev) =>
       operation === "add" ? prev + 50 : Math.max(prev - 50, 0)
-    ); // Prevent negative quantity
+    );
   };
 
   const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -34,7 +39,6 @@ const PageThree: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Prepare data for the POST request
     const requestData = {
       company_name: companyName,
       company_url: companyUrl,
@@ -51,18 +55,23 @@ const PageThree: React.FC = () => {
     };
 
     try {
-      // Make the POST request
       const response = await axios.post(
         "https://email-marketing.naad.tech/create_campaign",
         requestData
       );
-
-      // Handle the response, you can log it or show a success message
+      toast.success("Submitted Successfully!", {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+      });
       console.log("Campaign created successfully:", response.data);
 
-      setCampaignId(response.data.campaign_id); // Set the campaignId in the context
+      setCampaignId(response.data.campaign_id);
+      navigate("/page2");
 
-      // Optionally, you can reset the form state here
       setCampaignTimeline("");
       setCampaignType("Type 1");
       setCampaignStyle("Style 1");
@@ -100,6 +109,7 @@ const PageThree: React.FC = () => {
               value={campaignTimeline}
               onChange={(e) => setCampaignTimeline(e.target.value)}
               className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+              required
             />
           </div>
           <div>
@@ -274,12 +284,14 @@ const PageThree: React.FC = () => {
           </div>
         )}
         <div className="px-[40%]">
+          {/* <Link to="/page2"> */}
           <button
             type="submit"
             className="mt-4 px-4 py-2 bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-indigo-500 focus:ring-offset-2 text-white transition ease-in duration-200 text-center text-sm font-semibold shadow-md rounded-lg"
           >
             Save & Proceed
           </button>
+          {/* </Link> */}
         </div>
       </form>
     </div>

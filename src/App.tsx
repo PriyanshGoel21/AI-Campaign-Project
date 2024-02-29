@@ -3,10 +3,13 @@ import PageOne from "./pages/PageOne";
 import PageTwo from "./pages/PageTwo";
 import PageThree from "./pages/PageThree";
 import { CompanyProvider } from "./ThemeContext";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
 
 const App = () => {
   return (
     <CompanyProvider>
+      <ToastContainer position="top-center" autoClose={3000} />
       <Routes>
         <Route path="/" element={<PageOne />} />
         <Route path="/page2" element={<PageTwo />} />

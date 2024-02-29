@@ -12,8 +12,8 @@ interface CompanyContextType {
   setCompanyInfo: (name: string, url: string) => void;
   selectedCards: { [key: number]: boolean };
   setSelectedCards: Dispatch<SetStateAction<{ [key: number]: boolean }>>;
-  campaignId: number | null; // Define the campaignId property
-  setCampaignId: React.Dispatch<React.SetStateAction<number | null>>; // Define the setCampaignId function
+  campaignId: number | null;
+  setCampaignId: React.Dispatch<React.SetStateAction<number | null>>;
 }
 
 const CompanyContext = createContext<CompanyContextType | undefined>(undefined);
@@ -38,7 +38,7 @@ export const CompanyProvider: React.FC<CompanyProviderProps> = ({
   const [selectedCards, setSelectedCards] = React.useState<{
     [key: number]: boolean;
   }>({});
-  const [campaignId, setCampaignId] = React.useState<number | null>(null); // Initialize campaignId as null
+  const [campaignId, setCampaignId] = React.useState<number | null>(null);
 
   const setCompanyInfo = (name: string, url: string) => {
     setCompanyName(name);
@@ -51,8 +51,8 @@ export const CompanyProvider: React.FC<CompanyProviderProps> = ({
     setCompanyInfo,
     selectedCards,
     setSelectedCards,
-    campaignId, // Add campaignId to the context
-    setCampaignId, // Add setCampaignId to the context
+    campaignId,
+    setCampaignId,
   };
 
   return (

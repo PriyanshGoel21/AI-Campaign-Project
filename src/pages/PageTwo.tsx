@@ -5,9 +5,10 @@ import { FaArrowRightLong } from "react-icons/fa6";
 import Banner from "../components/Banner";
 import { useCompanyContext } from "../ThemeContext";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const PageTwo: React.FC = () => {
-  const { campaignId } = useCompanyContext(); // Get campaignId from context
+  const { campaignId } = useCompanyContext();
   const [file, setFile] = useState<File | null>(null);
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -23,10 +24,9 @@ const PageTwo: React.FC = () => {
     }
 
     try {
-      // Create FormData object
       const formData = new FormData();
-      formData.append("campaign_id", String(campaignId)); // Append campaign_id
-      formData.append("file", file, file.name); // Append file
+      formData.append("campaign_id", String(campaignId));
+      formData.append("file", file, file.name);
 
       // Make the POST request using axios
       const response = await axios.post(
@@ -39,10 +39,15 @@ const PageTwo: React.FC = () => {
         }
       );
 
-      // Handle the response
       console.log("File uploaded successfully:", response.data);
-
-      // Reset the file input after submission
+      toast.success("Submitted Successfully!", {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+      });
       setFile(null);
     } catch (error) {
       console.error("Error uploading file:", error);
