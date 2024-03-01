@@ -85,7 +85,7 @@ const PageThree: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center p-6 space-y-4 bg-[#FCFCFB] min-h-screen">
+    <div className="flex flex-col items-center justify-center p-6 space-y-4 min-h-screen custom-bg">
       {/* <div className="absolute top-0 right-0 m-4 text-lg font-semibold flex items-center justify-center gap-2">
         <span>Page 3/3</span>
         <FaArrowRightLong className="text-2xl text-slate-700" />

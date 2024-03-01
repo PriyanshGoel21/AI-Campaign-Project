@@ -9,6 +9,8 @@ import LoadingSpinner from "../components/LoadingSpinner";
 import Banner from "../components/Banner";
 import { useCompanyContext } from "../ThemeContext";
 import { toast } from "react-toastify";
+// import bgimg from "../assets/googlebg.png";
+// import aiimg from "../assets/ai-img.webp";
 
 interface Product {
   product_name: string;
@@ -83,7 +85,7 @@ const PageOne: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col mt-[6%] min-h-screen bg-[#FCFCFB]">
+    <div className="custom-bg flex flex-col pt-[6%] min-h-screen">
       {/* <div className="absolute top-0 right-0 m-4 text-lg font-semibold flex items-center justify-center gap-2">
         <span>Page 1/3</span>
         <FaArrowRightLong className="text-2xl text-slate-700" />

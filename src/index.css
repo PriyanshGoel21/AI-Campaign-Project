@@ -37,3 +37,11 @@ a {
   color: inherit;
   text-decoration: none;
 }
+
+.custom-bg {
+  background-image: url("./assets/googlebg.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  /* Add any additional styles here */
+}

@@ -55,7 +55,7 @@ const PageTwo: React.FC = () => {
   };
 
   return (
-    <div className="flex justify-center mt-[7%]">
+    <div className="flex justify-center custom-bg min-h-screen pt-[7%]">
       {/* <div className="md:hidden md:absolute top-0 right-0 m-4 text-lg font-semibold flex items-center justify-center gap-2">
         <span>Page 2/3</span>
         <FaArrowRightLong className="text-2xl text-slate-700" />
@@ -73,7 +73,7 @@ const PageTwo: React.FC = () => {
           <p className="text-white">Integration with Other Channels</p>
         </div>
       </div> */}
-      <div className="w-full md:w-1/2 flex flex-col items-center justify-center bg-[#FCFCFB] p-4">
+      <div className="w-full md:w-1/2 flex flex-col items-center p-4">
         {/* <h1 className="font-semibold text-3xl mb-4">Upload Your Contacts</h1> */}
         <form
           onSubmit={handleSubmit}
@@ -85,17 +85,18 @@ const PageTwo: React.FC = () => {
               htmlFor="file-upload"
               className="block mb-6 px-[33%] text-[20px] font-medium text-gray-900"
             >
-              Upload your Excel file
+              Upload your CSV file
             </label>
             <input
               id="file-upload"
               name="file-upload"
               type="file"
-              accept=".xlsx, .xls"
+              accept=".csv"
               onChange={handleFileChange}
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mb-10"
             />
           </div>
+
           <div className="px-[40%]">
             <button
               type="submit"
