@@ -161,8 +161,8 @@ const PageOne: React.FC = () => {
               </Accordion>
             )
           )}
-          <div className="px-[40%]">
-            <Link to="/page3">
+          <div className="flex justify-center">
+            <Link to="/page2">
               <button
                 className="mt-4 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg"
                 type="submit"
