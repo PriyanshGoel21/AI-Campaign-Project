@@ -51,7 +51,7 @@ const PageThree: React.FC = () => {
         };
       }),
       campaign_timeline: campaignTimeline,
-      threshold: 0,
+      threshold: 3,
     };
 
     try {

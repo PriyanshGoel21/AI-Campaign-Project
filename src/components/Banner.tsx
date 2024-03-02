@@ -16,6 +16,7 @@ const Banner: React.FC = () => {
       >
         <span className="text-[25px]">1</span> Company Info
       </Link>
+
       <Link
         to="/page2"
         className={`flex-1 text-center cursor-pointer max-w-[200px] font-semibold ${
@@ -24,7 +25,7 @@ const Banner: React.FC = () => {
             : "text-[#C9C9C9]"
         }`}
       >
-        <span className="text-[25px]">2</span> Contact
+        <span className="text-[25px]">2</span> Campaign
       </Link>
       <Link
         to="/page3"
@@ -34,7 +35,7 @@ const Banner: React.FC = () => {
             : "text-[#C9C9C9]"
         }`}
       >
-        <span className="text-[25px]">3</span> Campaign
+        <span className="text-[25px]">3</span> Contact
       </Link>
     </div>
   );

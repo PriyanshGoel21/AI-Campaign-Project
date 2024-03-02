@@ -12,8 +12,8 @@ const App = () => {
       <ToastContainer position="top-center" autoClose={3000} />
       <Routes>
         <Route path="/" element={<PageOne />} />
-        <Route path="/page2" element={<PageTwo />} />
-        <Route path="/page3" element={<PageThree />} />
+        <Route path="/page3" element={<PageTwo />} />
+        <Route path="/page2" element={<PageThree />} />
       </Routes>
     </CompanyProvider>
   );
