@@ -32,14 +32,7 @@ const PageTwo: React.FC = () => {
     const requestData = {
       company_name: companyName,
       company_url: companyUrl,
-      products: Object.keys(selectedCards).map((index) => {
-        return {
-          product_name: `Product ${index + 1}`,
-          product_url: `https://example.com/product${index + 1}`,
-          product_price: "999",
-          product_image_url: `https://example.com/image${index + 1}.jpg`,
-        };
-      }),
+      products: selectedCards,
       campaign_timeline: campaignTimeline,
       threshold: 3,
     };
