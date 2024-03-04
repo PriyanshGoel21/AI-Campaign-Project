@@ -10,8 +10,18 @@ interface CompanyContextType {
   companyName: string;
   companyUrl: string;
   setCompanyInfo: (name: string, url: string) => void;
-  selectedCards: { [key: number]: boolean };
-  setSelectedCards: Dispatch<SetStateAction<{ [key: number]: boolean }>>;
+  selectedCards: {
+    "product_name": string,
+    "product_price": string,
+    "product_image_url": string,
+    "product_url": string,
+  }[];
+  setSelectedCards: Dispatch<SetStateAction<{
+    "product_name": string,
+    "product_price": string,
+    "product_image_url": string,
+    "product_url": string
+  }[]>>;
   campaignId: number | null;
   setCampaignId: React.Dispatch<React.SetStateAction<number | null>>;
 }
@@ -36,8 +46,11 @@ export const CompanyProvider: React.FC<CompanyProviderProps> = ({
   const [companyName, setCompanyName] = React.useState("");
   const [companyUrl, setCompanyUrl] = React.useState("");
   const [selectedCards, setSelectedCards] = React.useState<{
-    [key: number]: boolean;
-  }>({});
+      "product_name": string,
+      "product_price": string,
+      "product_image_url": string,
+      "product_url": string
+    }[]>([]);
   const [campaignId, setCampaignId] = React.useState<number | null>(null);
 
   const setCompanyInfo = (name: string, url: string) => {

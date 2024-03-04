@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import Card from "../components/Card";
 import iphoneImg from "../assets/iphone-img.jpg";
 import { Link } from "react-router-dom";
-import { FaArrowRightLong } from "react-icons/fa6";
 import Accordion from "../components/Accordian";
 import axios from "axios";
 import LoadingSpinner from "../components/LoadingSpinner";
@@ -39,11 +38,12 @@ const PageOne: React.FC = () => {
     imgSrc: product.product_image_url,
     price: product.product_price,
     description: product.product_name,
+    productUrl: product.product_url,
   })) || [
-    { imgSrc: iphoneImg, price: "999", description: "iPhone 12 Pro" },
-    { imgSrc: iphoneImg, price: "999", description: "iPhone 12 Pro" },
-    { imgSrc: iphoneImg, price: "999", description: "iPhone 12 Pro" },
-    { imgSrc: iphoneImg, price: "999", description: "iPhone 12 Pro" },
+    { imgSrc: iphoneImg, price: "999", description: "iPhone 12 Pro", productUrl: "https://www.google.com" },
+    { imgSrc: iphoneImg, price: "999", description: "iPhone 12 Pro", productUrl: "https://www.google.com" },
+    { imgSrc: iphoneImg, price: "999", description: "iPhone 12 Pro", productUrl: "https://www.google.com" },
+    { imgSrc: iphoneImg, price: "999", description: "iPhone 12 Pro", productUrl: "https://www.google.com" },
   ];
 
   const fetchProductData = async () => {
@@ -80,9 +80,27 @@ const PageOne: React.FC = () => {
     fetchProductData();
   };
 
-  const toggleSelectCard = (index: number) => {
-    setSelectedCards((prev) => ({ ...prev, [index]: !prev[index] }));
-  };
+  const toggleSelectCard = (card: {
+    imgSrc: string;
+    price: string;
+    description: string;
+    productUrl: string;
+  }) => {
+    const cardsCopy = [...selectedCards];
+    const alreadyPresent = cardsCopy.find((test) => { return test.product_name === card.description })
+    if (alreadyPresent) {
+      const toSet = cardsCopy.filter((test) => test.product_name !== card.description)
+      setSelectedCards(toSet);
+    } else {
+      const cardToAdd = {
+        "product_name": card.description,
+        "product_price": card.price,
+        "product_image_url": card.imgSrc,
+        "product_url": card.productUrl
+      }
+      setSelectedCards([...selectedCards, cardToAdd])
+    }
+  }
 
   return (
     <div className="custom-bg flex flex-col pt-[6%] min-h-screen">
@@ -153,8 +171,8 @@ const PageOne: React.FC = () => {
                       imgSrc={card.imgSrc}
                       price={card.price}
                       description={card.description}
-                      isSelected={!!selectedCards[index]}
-                      onToggle={() => toggleSelectCard(index)}
+                      isSelected={selectedCards.find((test) => test.product_name === card.description) !== undefined}
+                      onToggle={() => toggleSelectCard(card)}
                     />
                   ))}
                 </div>

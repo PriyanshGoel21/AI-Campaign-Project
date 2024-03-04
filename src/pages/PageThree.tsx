@@ -1,7 +1,4 @@
 import React, { useState } from "react";
-import aiImg from "../assets/ai-img.webp";
-import { Link } from "react-router-dom";
-import { FaArrowRightLong } from "react-icons/fa6";
 import Banner from "../components/Banner";
 import { useCompanyContext } from "../ThemeContext";
 import axios from "axios";

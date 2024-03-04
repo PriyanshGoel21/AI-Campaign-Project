@@ -1,13 +1,9 @@
 import React, { useState } from "react";
-import { FaArrowRightLong } from "react-icons/fa6";
-import AlertDialog from "../components/AlertDialog";
 import Banner from "../components/Banner";
 import { useCompanyContext } from "../ThemeContext";
 import axios from "axios";
-import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import LoadingSpinner from "../components/LoadingSpinner";
 
 type CampaignType = "Type 1" | "Type 2" | "Type 3";
 type CampaignStyle = "Style 1" | "Style 2" | "Style 3";
@@ -24,12 +20,6 @@ const PageTwo: React.FC = () => {
   const [quantity, setQuantity] = useState(50);
   const [customOffer, setCustomOffer] = useState("no");
   const [bannerImage, setBannerImage] = useState<File | null>(null);
-
-  const handleQuantityChange = (operation: "add" | "subtract") => {
-    setQuantity((prev) =>
-      operation === "add" ? prev + 50 : Math.max(prev - 50, 0)
-    );
-  };
 
   const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files ? event.target.files[0] : null;
@@ -53,6 +43,8 @@ const PageTwo: React.FC = () => {
       campaign_timeline: campaignTimeline,
       threshold: 3,
     };
+
+    console.log(requestData);
 
     try {
       const response = await axios.post(
@@ -151,7 +143,7 @@ const PageTwo: React.FC = () => {
               <option>Search Engine Optimization (SEO) Campaign</option>
               <option>Pay-Per-Click (PPC) Campaign</option>
               <option>Affiliate Marketing Campaign</option>
-              <option>Video Marketing Campaign</option>
+              <option>Video Marketing Campaign</option>
             </select>
           </div>
 
@@ -177,7 +169,7 @@ const PageTwo: React.FC = () => {
               <option>Welcome Series</option>
               <option>Abandoned Cart Reminders</option>
               <option>Customer Feedback Surveys</option>
-              <option>Educational Content</option>
+              <option>Educational Content</option>
             </select>
           </div>
         </div>
